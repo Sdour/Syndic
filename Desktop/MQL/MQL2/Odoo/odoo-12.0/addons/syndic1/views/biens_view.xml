@@ -1,0 +1,62 @@
+<odoo>
+    <data>
+
+        <record id="Biens_free_view" model="ir.ui.view">
+            <field name="name">Biens Form</field>
+            <field name="model">biens.biens</field>
+            <field name="arch" type="xml">
+                <form string="Biens">
+                    <sheet>
+                        <div class="oe_title">
+                            <h2>
+                                <field name="name" placeholder="Identifiant"/>
+                            </h2>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="nom"/>
+                                <field name="batiment"/>
+                                <field name="nombre"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Informations supplementaire">
+                                <field name="info"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+        <record model="ir.ui.view" id="biens_list">
+            <field name="name">Biens</field>
+            <field name="model">biens.biens</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="nom"/>
+                    <field name="nombre"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="biens_action_window">
+            <field name="name">Biens</field>
+            <field name="res_model">biens.biens</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Cree un bien</p>
+            </field>
+        </record>
+
+        <menuitem name="Syndic" id="syndic_menu_root"/>
+        <menuitem name="Biens" id="syndic_menu_4" parent="syndic_menu_root"/>
+        <menuitem name="Bien" id="syndic_menu_5" parent="syndic_menu_4" action="biens_action_window"/>
+    </data>
+</odoo>

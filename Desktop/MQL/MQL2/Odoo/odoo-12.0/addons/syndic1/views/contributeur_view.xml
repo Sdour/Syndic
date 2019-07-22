@@ -1,0 +1,62 @@
+<odoo>
+    <data>
+
+        <record id="contributeur_free_view" model="ir.ui.view">
+            <field name="name">contribution form</field>
+            <field name="model">contributeur.contributeur</field>
+            <field name="arch" type="xml">
+                <form string="Contributeur">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="hab"/>
+                                <field name="date"/>
+                                <field name="nbr_paye"/>
+                                <field name="nbr_impaye"/>
+                            </group>
+                            <group>
+                                <field name="app"/>
+                                <field name="bat"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Informations supplementaire">
+                                <field name="info"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="contributeur_list">
+            <field name="name">Contributeur</field>
+            <field name="model">contributeur.contributeur</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="hab"/>
+                    <field name="date"/>
+                    <field name="app"/>
+                    <field name="bat"/>
+                    <field name="nbr_paye"/>
+                    <field name="nbr_impaye"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="contributeur_action_window">
+            <field name="name">Contributeur</field>
+            <field name="res_model">contributeur.contributeur</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Cree une contribution</p>
+            </field>
+        </record>
+
+        <menuitem name="Paie" id="syndic_menu_paie" parent="syndic_menu_root"/>
+        <menuitem name="Contribution" id="syndic_menu_contribution" parent="syndic_menu_paie" action="contributeur_action_window"/>
+    </data>
+</odoo>

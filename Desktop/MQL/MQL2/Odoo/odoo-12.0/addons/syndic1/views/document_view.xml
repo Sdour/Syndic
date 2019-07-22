@@ -1,0 +1,43 @@
+<odoo>
+    <data>
+
+        <record id="document_form_inherit" model="ir.ui.view" >
+            <field name="name">document inherit</field>
+            <field name="model">muk_dms.file</field>
+            <field name="inherit_id" ref="muk_dms.view_dms_file_form"/>
+            <field name="arch" type="xml">
+                <field name="content" />
+                <field name="size" />
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="document_list">
+            <field name="name">Archive</field>
+            <field name="model">muk_dms.file</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="write_date" />
+                    <field name="size" widget="binary_size" />
+                    <field name="mimetype" />
+                    <field name="migration" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="document_action_window">
+            <field name="name">Archive</field>
+            <field name="res_model">muk_dms.file</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Archivée un document
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Syndic" id="syndic_menu_root"/>
+        <menuitem name="Archive" id="syndic_menu_document" parent="syndic_menu_root" action="document_action_window"/>
+    </data>
+</odoo>

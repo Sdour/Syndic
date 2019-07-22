@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_syndic1_syndic1,access.syndic1.syndic1,model_syndic1_syndic1,base.group_user,1,1,1,1
+access_habitants_habitants,access_habitants_habitants,model_habitants_habitants,base.group_user,1,1,1,1
+access_batiment_batiment,access_batiment_batiment,model_batiment_batiment,base.group_user,1,1,1,1
+access_appartement_appartement,access_appartement_appartement,model_appartement_appartement,base.group_user,1,1,1,1
+access_biens_biens,access_biens_biens,model_biens_biens,base.group_user,1,1,1,1
+access_reunion_reunion,access_reunion_reunion,model_reunion_reunion,base.group_user,1,1,1,1
+access_reparation_reparation,access_reparation_reparation,model_reparation_reparation,base.group_user,1,1,1,1
+access_document_document,access_document_document,model_document_document,base.group_user,1,1,1,1
+access_achat_achat,access_achat_achat,model_achat_achat,base.group_user,1,1,1,1
+access_paiement_paiement,access_paiement_paiement,model_paiement_paiement,base.group_user,1,1,1,1
+access_contributeur_contributeur,access_contributeur_contributeur,model_contributeur_contributeur,base.group_user,1,1,1,1

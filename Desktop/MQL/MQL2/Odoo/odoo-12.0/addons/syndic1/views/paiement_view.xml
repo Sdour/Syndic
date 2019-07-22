@@ -1,0 +1,71 @@
+<odoo>
+    <data>
+
+        <record id="Paiement_free_view" model="ir.ui.view">
+            <field name="name">Paiement form</field>
+            <field name="model">paiement.paiement</field>
+            <field name="arch" type="xml">
+                <form string="Paiement">
+                    <header>
+                        <button name="valider" string="Valider" class="oe_highlight" type="object" state="in" attrs="{'invisible': [('state', '=', 'out')]}"/>
+                        <button name="envoyer" string="Envoyer un email" class="oe_highlight" type="object"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" placeholder="Identifiant"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="hab"/>
+                                <field name="date"/>
+                                <field name="nbrmois"/>
+                                <field name="du"/>
+                                <field name="vers"/>
+                                <field name="somme"/>
+                                <field name="state" invisible="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Informations supplementaire">
+                                <field name="info"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+        <record model="ir.ui.view" id="paiement_list">
+            <field name="name">Paiement</field>
+            <field name="model">paiement.paiement</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="hab"/>
+                    <field name="date"/>
+                    <field name="nbrmois"/>
+                    <field name="somme"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="paiement_action_window">
+            <field name="name">Paiement</field>
+            <field name="res_model">paiement.paiement</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Cree une facture</p>
+            </field>
+        </record>
+
+        <menuitem name="Paie" id="syndic_menu_paie" parent="syndic_menu_root"/>
+        <menuitem name="Paiement" id="syndic_menu_paiment" parent="syndic_menu_paie" action="paiement_action_window"/>
+    </data>
+</odoo>

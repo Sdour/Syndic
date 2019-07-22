@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_car_request_form" model="ir.ui.view">
+            <field name="name">repartion list</field>
+            <field name="model">reparation.reparation</field>
+            <field name="arch" type="xml">
+                <form name="Réparation">
+                    <header>
+                        <button name="en_cours_request" string="En cours" class="oe_highlight" states="annule,repare" type="object"/>
+                        <button name="annule_request" string="Annulé" states="en_cours" type="object" />
+                        <button name="repare_request" string="Réparé" class="oe_highlight" states="en_cours" type="object"/>
+
+                        <field name="state" widget="statusbar" statusbar_visible="en_cours,annule,repare"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" placeholder="Identifiant"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="biens"/>
+                                <field name="hab"/>
+                                <field name="somme"/>
+                            </group>
+                            <group>
+                                <field name="datedebut"/>
+                                <field name="datefin"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Informations supplementaire">
+                                <field name="info"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_car_request_tree" model="ir.ui.view">
+            <field name="name">reparation tree</field>
+            <field name="model">reparation.reparation</field>
+            <field name="arch" type="xml">
+                <tree string="Réparation">
+                    <field name="biens"/>
+                    <field name="hab"/>
+                    <field name="somme"/>
+                    <field name="datedebut"/>
+                    <field name="datefin"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="reparation_action_window" model="ir.actions.act_window">
+            <field name="name">Réparation</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">reparation.reparation</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Réparation
+                </p><p>
+                crée une réparation
+            </p>
+            </field>
+        </record>
+
+        <menuitem name="Syndic" id="syndic_menu_root"/>
+        <menuitem name="Réparation" id="syndic_menu_rep" parent="syndic_menu_root" action="reparation_action_window"/>
+    </data>
+</odoo>

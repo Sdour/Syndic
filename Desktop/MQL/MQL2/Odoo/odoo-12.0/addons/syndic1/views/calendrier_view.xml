@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="syndic_form_event_cal">
+        <field name="name">Calendier form</field>
+        <field name="model">calendar.event</field>
+        <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_ids']/.." position="after">
+                <group>
+                    <field name="building_id"/>
+                    <field name="is_ag"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+
+    <menuitem name="Syndic" id="syndic_menu_root"/>
+    <menuitem name="Calendrier" id="syndic_menu_cal" parent="syndic_menu_root" action="calendar.action_calendar_event"/>
+</odoo>

@@ -1,0 +1,66 @@
+<odoo>
+    <data>
+
+        <record id="reunion_form" model="ir.ui.view" >
+            <field name="name">reunion </field>
+            <field name="model">reunion.reunion</field>
+            <field name="arch" type="xml">
+                <form name="Reunion">
+                    <header>
+                        <button name="envoyer1" string="Envoyer" class="oe_highlight"  type="object"/>
+                        <button name="envoyer2" string="Envoyer a tous les habitants"  type="object" />
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" placeholder="Object"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="heure"/>
+                                <field name="lieu"/>
+                            </group>
+                            <group>
+                                <field name="bat"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Informations supplementaire">
+                                <field name="info"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="reunion_list">
+            <field name="name">Reunion</field>
+            <field name="model">reunion.reunion</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="heure"/>
+                    <field name="lieu"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="reunion_action_window">
+            <field name="name">Reunion</field>
+            <field name="res_model">reunion.reunion</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Cree une reunion
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Syndic" id="syndic_menu_root"/>
+        <menuitem name="Reunion" id="syndic_menu_reun" parent="syndic_menu_root" action="reunion_action_window"/>
+    </data>
+</odoo>
